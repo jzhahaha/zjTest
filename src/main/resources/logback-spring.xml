@@ -1,0 +1,46 @@
+
+<configuration>
+    <property name="localPattern"
+              value="%d{YYYY-MM-dd HH:mm:ss.SSS} %5p [%t] %c - %m%n  /zjtest"/>
+
+    <property name="defaultPattern"
+              value="%d{YYYY-MM-dd HH:mm:ss.SSS} %5p [%t] %c - %m %replace(%ex){'\n', '\t\t'}%nopex%n"/>
+
+    <!-- 控制台输出 -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${localPattern}</pattern>
+        </encoder>
+    </appender>
+    <!-- 文件输出 -->
+    <appender name="RunLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_FILE}</file>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${LOG_FILE}.%d{yyyyMMdd}
+            </fileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${defaultPattern}</pattern>
+        </encoder>
+    </appender>
+
+
+
+    <!--分文件-->
+    <springProfile name="dev">
+        <!--指定最基础的日志输出级别-->
+        <root level="INFO">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RunLog" />
+        </root>
+        <logger name="com.test.demo" level="DEBUG" additivity="false">
+            <appender-ref ref="RunLog" />
+        </logger>
+    </springProfile>
+
+</configuration>
