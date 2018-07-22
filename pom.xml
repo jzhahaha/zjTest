@@ -132,7 +132,13 @@
          <version>3.8</version>
        </dependency>
 
+        <!---kafka-->
 
+        <!---mongo-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
 
 
     </dependencies>

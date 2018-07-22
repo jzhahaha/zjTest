@@ -121,6 +121,7 @@ public class HttpClientUtil {
                 System.out.println("================================");
                 // 打印响应状态
                 System.out.println(httpResponse.getStatusLine());
+                System.out.println(httpResponse.getStatusLine().getStatusCode());
                 if (httpEntity != null) {
                     // 打印响应内容长度
                     System.out.println("Response content length: " + httpEntity.getContentLength());
