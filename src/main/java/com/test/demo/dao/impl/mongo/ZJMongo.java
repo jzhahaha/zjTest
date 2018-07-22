@@ -1,6 +1,5 @@
 package com.test.demo.dao.impl.mongo;
 
-import com.test.demo.dao.ZJDao;
 import com.test.demo.model.ZJModels;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,7 +12,7 @@ import java.util.Map;
 public class ZJMongo  {
 
     @Autowired
-    private MongoTemplate mongoTemplate = new MongoTemplate();
+    private MongoTemplate mongoTemplate;
 
 //    @Override
     public void createUser(String name, Integer age, String area) {
